@@ -4,7 +4,7 @@
         <v-app-bar-nav-icon @click="leftDrawer = !leftDrawer"></v-app-bar-nav-icon>
         <v-row justify="space-between" align="center">
           <v-col cols="4">
-            icon
+            logo-space
           </v-col>
           <v-col cols="8" class="text-right">
             <v-btn icon @click="rightDrawer = !rightDrawer" style="display: inline-block;">

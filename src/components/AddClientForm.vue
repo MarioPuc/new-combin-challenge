@@ -100,7 +100,8 @@ export default {
       }
     },
     resetValidation () {
-      if (this.objClient.firstName && this.objClient.lastName && this.objClient.address && this.objClient.ssn) {
+      const { firstName, lastName, address, ssn } = this.objClient
+      if (firstName && lastName && address && ssn) {
         const validState = this.$refs.form.validate()
         console.log(validState)
         if (validState) {

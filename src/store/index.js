@@ -9,8 +9,6 @@ export default new Vuex.Store({
     clients: [],
     errorMessage: ''
   },
-  getters: {
-  },
   mutations: {
     setClients (state, payload) {
       state.clients = payload
@@ -26,7 +24,7 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    addClient ({ commit }, obj) {
+    addClient ({ commit }, objClient) {
       const token = localStorage.getItem('token-x')
       fetch('http://localhost:8081/api/members ', {
         method: 'POST',
@@ -34,7 +32,7 @@ export default new Vuex.Store({
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(objClient)
       })
         .then(async (response) => {
           const res = await response.json()
@@ -48,10 +46,9 @@ export default new Vuex.Store({
         })
     },
     getClients ({ commit }) {
-      console.log('form get clients')
       const token = localStorage.getItem('token-x')
       if (token === null || token === undefined || typeof token !== 'string') {
-        return 'La sesión ha expirado, por favor inicie sesión'
+        return 'Token not found'
       }
 
       fetch('http://localhost:8081/api/members ', {
@@ -71,11 +68,11 @@ export default new Vuex.Store({
           }
         })
     },
-    login ({ commit }, obj) {
+    login ({ commit }, objUser) {
       fetch('http://localhost:8081/auth', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(obj)
+        body: JSON.stringify(objUser)
       })
         .then(async (response) => {
           const res = await response.json()
@@ -88,11 +85,8 @@ export default new Vuex.Store({
           }
         })
         .catch(err => {
-          commit('setError', 'Server error, please try later')
-          console.log('error: ' + err)
+          commit('setError', `Server error: ${err}, please try later`)
         })
     }
-  },
-  modules: {
   }
 })
