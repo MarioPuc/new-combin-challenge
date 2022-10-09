@@ -10,6 +10,8 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 import LoginForm from '../components/LoginForm.vue'
 
 export default {
@@ -19,8 +21,21 @@ export default {
     LoginForm
   },
 
+  computed: {
+    ...mapState(['isLogged'])
+  },
+
+  watch: {
+    isLogged () {
+      if (this.isLogged === true) {
+        this.$router.push('/dashboard')
+      }
+    }
+  },
+
   data: () => ({
     //
   })
+
 }
 </script>

@@ -1,24 +1,16 @@
 # new-combin-challenge
 
-## Project setup
+## Instalar dependencias
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Servir la applicación localmente
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compilar version para su despliege en producción
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

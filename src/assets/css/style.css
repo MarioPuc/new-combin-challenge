@@ -1,3 +1,10 @@
 .f-height {
     height: 100vh;
 }
+.errorMessage {
+    color: #e53935;
+    font-weight: bold;
+}
+.loginCard {
+    min-width: 400px;
+}
